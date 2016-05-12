@@ -45,7 +45,7 @@ callFriend()("435-215-9248");
 */
 
 function makeCounter() {
-  var num = 0;
+  var num = 1;
   return function () {
     return num++;
   }
@@ -69,17 +69,17 @@ count(); // 4
 // You will need to use the module pattern to achieve this.
 
 function counterFactory(value) {
-  return function inc() {
-    console.log(value = value + 1);
+    return function inc() {
+      value += 1;
+      function dec() {
+      value -= 1;
+    }
+      return value;
   };
-  return function dec() {
-    console.log(value = value - 1);
-  };
-
-};
+}
 
 var counter = counterFactory(10);
-counter();
+console.log(counter());
 
 
 

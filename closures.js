@@ -69,17 +69,20 @@ count(); // 4
 // You will need to use the module pattern to achieve this.
 
 function counterFactory(value) {
-    return function inc() {
+  return {
+    inc: function(value) {
       value += 1;
-      function dec() {
-      value -= 1;
-    }
       return value;
+    },
+    dec: function(value) {
+      value -= 1;
+      return value;
+    }
   };
 }
-
-var counter = counterFactory(10);
-console.log(counter());
+counter = counterFactory(10);
+console.log(counter.inc(1));
+console.log(counter.dec(1));
 
 
 
